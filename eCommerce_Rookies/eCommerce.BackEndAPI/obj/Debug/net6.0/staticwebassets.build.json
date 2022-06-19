@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "WhRHCr8PVfw3Vm4c2JwwY9Qo4TnQ9QwmuJjDcz2jSDI=",
+  "Source": "eCommerce.BackEndAPI",
+  "BasePath": "_content/eCommerce.BackEndAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
