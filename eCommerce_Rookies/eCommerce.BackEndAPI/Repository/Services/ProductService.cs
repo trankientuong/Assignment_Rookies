@@ -1,5 +1,7 @@
-﻿using eCommerce.BackEndAPI.Models;
+﻿using AutoMapper;
+using eCommerce.BackEndAPI.Models;
 using eCommerce.BackEndAPI.Models.DTOs.ProductService;
+using eCommerce.BackEndAPI.Models.Entities;
 using eCommerce.BackEndAPI.Repository.IServices;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,15 +10,24 @@ namespace eCommerce.BackEndAPI.Repository.Services
     public class ProductService : IProductService
     {
         private readonly eCommerceDbContext _db;
+        private readonly IMapper _mapper;
 
-        public ProductService(eCommerceDbContext db)
+        public ProductService(eCommerceDbContext db,IMapper mapper)
         {
             _db = db;
-
+            _mapper = mapper;
         }
         public async Task<ProductDetailsDto> CreateProductAsync(CreateProductDto productDto)
         {
-            throw new NotImplementedException();
+            var product = _mapper.Map<Product>(productDto);
+            using (_db)
+            {
+                await _db.Products.AddAsync(product);
+                await _db.SaveChangesAsync();
+                var productDetailsDto = _mapper.Map<ProductDetailsDto>(product);
+                return productDetailsDto;
+            }
+            return null;
         }
 
         public async Task<ProductDetailsDto> DeleteProductAsync(int productId)
@@ -29,26 +40,25 @@ namespace eCommerce.BackEndAPI.Repository.Services
             throw new NotImplementedException();
         }
 
-        public async Task<List<ProductsDto>> ListProductsAsync()
+        public async Task<ProductsDto> ListProductsAsync(int? page,int? pageSize)
         {
             using (_db)
             {
                 var products = await _db.Products.Include(c => c.Category).ToListAsync();
                 if(products != null)
                 {
-                    var productsDto = new List<ProductsDto>();
-                    foreach(var product in products)
-                    {
-                        foreach(var productDto in productsDto)
-                        {
-                            productDto.Id = product.Id;
-                            productDto.ProductName = product.ProductName;
-                            productDto.Description = product.Description;
-                            productDto.CategoryName = product.Category.CategoryName;
-                            productDto.Price = product.Price;
-                            productDto.Images = product.Images;
-                        }
-                    }
+                    var _pageSize = pageSize ?? 8; // Số bản ghi trên trang
+                    var pageIndex = page ?? 1; // Số trang hiện tại nếu null thì bằng 1
+                    var totalPage = products.Count;
+                    var numberPage = Math.Ceiling((float)totalPage / _pageSize);
+                    var startPage = (pageIndex - 1) * _pageSize;
+                    products = products.Skip(startPage).Take(_pageSize).ToList();
+                    var ListProductDetailsDto = _mapper.Map<List<ProductDetailsDto>>(products);
+                    var productsDto = _mapper.Map<ProductsDto>(ListProductDetailsDto);
+                    productsDto.TotalItem = totalPage;
+                    productsDto.CurrentPage = pageIndex;
+                    productsDto.NumberPage = numberPage;
+                    productsDto.PageSize = _pageSize;
                     return productsDto;
                 }
             };

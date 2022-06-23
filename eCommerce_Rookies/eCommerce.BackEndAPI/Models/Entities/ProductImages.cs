@@ -1,10 +1,10 @@
 ﻿namespace eCommerce.BackEndAPI.Models.Entities
 {
-    public class Category
+    public class ProductImages
     {
         public int Id { get; set; }
-        public string CategoryName { get; set; }
-        public string Description { get; set; }
+        public int ProductId { get; set; }
+        public Product Product { get; set; }
         public string Image { get; set; }
     }
 }

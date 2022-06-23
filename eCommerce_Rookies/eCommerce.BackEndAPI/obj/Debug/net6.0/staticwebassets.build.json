@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "WhRHCr8PVfw3Vm4c2JwwY9Qo4TnQ9QwmuJjDcz2jSDI=",
+  "Hash": "GxGG67/ZHAK64eohkVe34B1NwFocagZqEGDfCmPKkb0=",
   "Source": "eCommerce.BackEndAPI",
   "BasePath": "_content/eCommerce.BackEndAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "eCommerce.BackEndAPI\\wwwroot",
+      "Source": "eCommerce.BackEndAPI",
+      "ContentRoot": "C:\\Users\\MSl\\source\\repos\\Assignment_Rookies\\eCommerce_Rookies\\eCommerce.BackEndAPI\\wwwroot\\",
+      "BasePath": "_content/eCommerce.BackEndAPI",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }
