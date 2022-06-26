@@ -2,11 +2,14 @@
 {
     public class ProductsDto
     {
-        public int Id { get; set; }
-        public string ProductName { get; set; }
-        public string Description { get; set; }
-        public string Price { get; set; }
-        public string Images { get; set; }
-        public string CategoryName { get; set; } // Type Category
+        public List<ProductDetailsDto> Products { get; set; }
+        public int TotalItem { get; set; }
+        public int CurrentPage { get; set; }
+        public double NumberPage { get; set; }
+        public int? PageSize { get; set; }
+        public ProductsDto()
+        {
+            this.Products = new List<ProductDetailsDto>();
+        }
     }
 }

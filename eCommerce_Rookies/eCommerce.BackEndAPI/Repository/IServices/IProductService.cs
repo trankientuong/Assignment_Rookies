@@ -4,7 +4,7 @@ namespace eCommerce.BackEndAPI.Repository.IServices
 {
     public interface IProductService
     {
-        Task<List<ProductsDto>> ListProductsAsync();
+        Task<ProductsDto> ListProductsAsync(int? page, int? pageSize);
         Task<ProductDetailsDto> GetDetailsProductAsync(int productId);
         Task<ProductDetailsDto> CreateProductAsync(CreateProductDto productDto);
         Task<ProductDetailsDto> UpdateProductAsync(int productId,UpdateProductDto productDto);
