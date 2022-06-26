@@ -9,11 +9,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "eCommerce.Services", "eComm
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "eCommerce.Webs", "eCommerce.Webs", "{0F064B0B-D76C-4A08-B8AA-51C53314E025}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCommerce.BackEndAPI", "eCommerce.BackEndAPI\eCommerce.BackEndAPI.csproj", "{1F85E3B0-5EDC-45F5-B411-B9A57FD88348}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eCommerce.BackEndAPI", "eCommerce.BackEndAPI\eCommerce.BackEndAPI.csproj", "{1F85E3B0-5EDC-45F5-B411-B9A57FD88348}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCommerce.CustomerWeb", "eCommerce.CustomerWeb\eCommerce.CustomerWeb.csproj", "{D26FA557-385A-4619-814B-5CDE55FB0DEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eCommerce.CustomerWeb", "eCommerce.CustomerWeb\eCommerce.CustomerWeb.csproj", "{D26FA557-385A-4619-814B-5CDE55FB0DEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eCommerce.SharedLibrary", "eCommerce.SharedLibrary\eCommerce.SharedLibrary.csproj", "{111E6DB1-53D7-47CE-948E-DE559F913EAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eCommerce.SharedLibrary", "eCommerce.SharedLibrary\eCommerce.SharedLibrary.csproj", "{111E6DB1-53D7-47CE-948E-DE559F913EAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
