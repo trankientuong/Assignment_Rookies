@@ -2,11 +2,10 @@
 {
     public class UpdateProductDto
     {
-        public int Id { get; set; }
         public string ProductName { get; set; }
         public string Description { get; set; }
         public string Price { get; set; }
-        public string Images { get; set; }
+        public List<IFormFile> Images { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
 

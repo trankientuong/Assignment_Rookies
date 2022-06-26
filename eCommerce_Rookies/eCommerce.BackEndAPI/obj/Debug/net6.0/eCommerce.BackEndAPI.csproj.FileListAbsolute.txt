@@ -62,3 +62,5 @@ C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.BackEnd
 C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.BackEndAPI\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.BackEndAPI\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.BackEndAPI\bin\Debug\net6.0\eCommerce.BackEndAPI.staticwebassets.runtime.json
+C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.BackEndAPI\bin\Debug\net6.0\eCommerce.SharedLibrary.dll
+C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.BackEndAPI\bin\Debug\net6.0\eCommerce.SharedLibrary.pdb

@@ -24,13 +24,36 @@ namespace eCommerce.BackEndAPI.Controllers
             return Ok(products);
         }
 
+        [HttpGet("[action]/{productId}")]
+        public async Task<IActionResult> GetProductDetails(int productId)
+        {
+            var product = await _productService.GetDetailsProductAsync(productId);
+            if(product == null) return NotFound();
+            return Ok(product);
+        }
+
         [HttpPost("[action]")]
         public async Task<IActionResult> CreateProduct([FromForm] CreateProductDto createProduct)
         {
             var product = await _productService.CreateProductAsync(createProduct);
-            if (product == null) return BadRequest("Failed");
+            if (product == null) return BadRequest();
             return Ok(product);
-        }    
-          
+        }
+
+        [HttpPut("[action]/{productId}")]
+        public async Task<IActionResult> UpdateProduct(int productId,[FromForm] UpdateProductDto updateProduct)
+        {
+            var product = await _productService.UpdateProductAsync(productId,updateProduct);
+            if (product == null) return BadRequest();
+            return Ok(product);
+        }
+
+        [HttpDelete("[action]/{productId}")]
+        public async Task<IActionResult> DeleteProduct(int productId)
+        {
+            var product = await _productService.DeleteProductAsync(productId);
+            if (product == null) return NotFound();
+            return Ok(product);
+        }
     }
 }
