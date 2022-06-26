@@ -1,5 +1,6 @@
 ﻿using eCommerce.BackEndAPI.Models.DTOs.ProductService;
 using eCommerce.BackEndAPI.Repository.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,7 @@ namespace eCommerce.BackEndAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
@@ -16,6 +18,7 @@ namespace eCommerce.BackEndAPI.Controllers
             _productService = productService;
         }
 
+        [AllowAnonymous]
         [HttpGet("[action]")]
         public async Task<IActionResult> GetProducts(int? page,int? pageSize)
         {
@@ -24,6 +27,7 @@ namespace eCommerce.BackEndAPI.Controllers
             return Ok(products);
         }
 
+        [AllowAnonymous]
         [HttpGet("[action]/{productId}")]
         public async Task<IActionResult> GetProductDetails(int productId)
         {

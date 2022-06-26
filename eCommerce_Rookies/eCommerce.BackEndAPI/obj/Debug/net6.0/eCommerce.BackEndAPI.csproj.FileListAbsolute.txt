@@ -64,3 +64,10 @@ C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.BackEnd
 C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.BackEndAPI\bin\Debug\net6.0\eCommerce.BackEndAPI.staticwebassets.runtime.json
 C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.BackEndAPI\bin\Debug\net6.0\eCommerce.SharedLibrary.dll
 C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.BackEndAPI\bin\Debug\net6.0\eCommerce.SharedLibrary.pdb
+C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.BackEndAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.BackEndAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.BackEndAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.BackEndAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.BackEndAPI\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.BackEndAPI\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.BackEndAPI\bin\Debug\net6.0\CryptographyHelper.dll

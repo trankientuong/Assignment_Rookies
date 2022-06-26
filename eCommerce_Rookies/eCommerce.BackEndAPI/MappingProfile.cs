@@ -21,6 +21,13 @@ namespace eCommerce.BackEndAPI
                 .ReverseMap();
             CreateMap<ProductImages, ProductImagesDto>()
                 .ReverseMap();
+
+            CreateMap<Category, CategoriesDto>()
+                .ReverseMap();
+            CreateMap<CategoryCreateDto, Category>();
+            CreateMap<CategoryDetailsDto, Category>()
+                .ReverseMap();
+            CreateMap<CategoryUpdateDto, Category>();
         }
     }
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "SadfTmxBr4oX8lfgrDUwidRQxy3+rK3tv0WDUs45PBA=",
+  "Hash": "pp5NGsZIMlbVRgWiaCyzQxPpQXPR+I1aYJI/cwLwCgw=",
   "Source": "eCommerce.BackEndAPI",
   "BasePath": "_content/eCommerce.BackEndAPI",
   "Mode": "Default",
@@ -16,6 +16,23 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\MSl\\source\\repos\\Assignment_Rookies\\eCommerce_Rookies\\eCommerce.BackEndAPI\\wwwroot\\Images\\Products\\0c181777-2e62-4036-ba63-052ba6ecb0dc.jpeg",
+      "SourceId": "eCommerce.BackEndAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MSl\\source\\repos\\Assignment_Rookies\\eCommerce_Rookies\\eCommerce.BackEndAPI\\wwwroot\\",
+      "BasePath": "_content/eCommerce.BackEndAPI",
+      "RelativePath": "Images/Products/0c181777-2e62-4036-ba63-052ba6ecb0dc.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Products\\0c181777-2e62-4036-ba63-052ba6ecb0dc.jpeg"
+    },
     {
       "Identity": "C:\\Users\\MSl\\source\\repos\\Assignment_Rookies\\eCommerce_Rookies\\eCommerce.BackEndAPI\\wwwroot\\Images\\Products\\18e01953-94a8-45de-8919-9e72388cf5d9.jpeg",
       "SourceId": "eCommerce.BackEndAPI",
@@ -170,6 +187,23 @@
       "OriginalItemSpec": "wwwroot\\Images\\Products\\95681439-05e0-47f5-b02d-86b4973193ef.jpeg"
     },
     {
+      "Identity": "C:\\Users\\MSl\\source\\repos\\Assignment_Rookies\\eCommerce_Rookies\\eCommerce.BackEndAPI\\wwwroot\\Images\\Products\\a928a7d4-f678-4bdc-b221-8c8aeede2eac.jpeg",
+      "SourceId": "eCommerce.BackEndAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MSl\\source\\repos\\Assignment_Rookies\\eCommerce_Rookies\\eCommerce.BackEndAPI\\wwwroot\\",
+      "BasePath": "_content/eCommerce.BackEndAPI",
+      "RelativePath": "Images/Products/a928a7d4-f678-4bdc-b221-8c8aeede2eac.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Products\\a928a7d4-f678-4bdc-b221-8c8aeede2eac.jpeg"
+    },
+    {
       "Identity": "C:\\Users\\MSl\\source\\repos\\Assignment_Rookies\\eCommerce_Rookies\\eCommerce.BackEndAPI\\wwwroot\\Images\\Products\\b09224b8-e020-42ab-a2da-4069f86e493e.jpeg",
       "SourceId": "eCommerce.BackEndAPI",
       "SourceType": "Discovered",
@@ -185,6 +219,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\Products\\b09224b8-e020-42ab-a2da-4069f86e493e.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\MSl\\source\\repos\\Assignment_Rookies\\eCommerce_Rookies\\eCommerce.BackEndAPI\\wwwroot\\Images\\Products\\bdaf91b4-5e14-4e71-8ae9-ae498866f916.jpeg",
+      "SourceId": "eCommerce.BackEndAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MSl\\source\\repos\\Assignment_Rookies\\eCommerce_Rookies\\eCommerce.BackEndAPI\\wwwroot\\",
+      "BasePath": "_content/eCommerce.BackEndAPI",
+      "RelativePath": "Images/Products/bdaf91b4-5e14-4e71-8ae9-ae498866f916.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Products\\bdaf91b4-5e14-4e71-8ae9-ae498866f916.jpeg"
     },
     {
       "Identity": "C:\\Users\\MSl\\source\\repos\\Assignment_Rookies\\eCommerce_Rookies\\eCommerce.BackEndAPI\\wwwroot\\Images\\Products\\cd824dea-3362-4c09-ba9c-e54b925c4f86.jpeg",
