@@ -55,7 +55,7 @@ namespace eCommerce.BackEndAPI.Repository.Services
                 var product = await _db.Products.Include(p => p.Images).Include(c => c.Category).FirstOrDefaultAsync(x => x.Id == productId);
                 if (product != null)
                 {
-                    if(product.Images != null)
+                    if (product.Images != null)
                     {
                         foreach (var imageP in product.Images)
                         {
@@ -77,6 +77,7 @@ namespace eCommerce.BackEndAPI.Repository.Services
             {
                 var product = await _db.Products.Include(p => p.Images)
                                                 .Include(p => p.Category)
+                                                .Include(p => p.ProductRatings)
                                                 .FirstOrDefaultAsync(p => p.Id == productId);
                 if (product != null)
                 {
@@ -137,7 +138,7 @@ namespace eCommerce.BackEndAPI.Repository.Services
                             await _db.SaveChangesAsync();
                         }
                         product = _mapper.Map(productDto, product);
-                        foreach(var image in productDto.Images)
+                        foreach (var image in productDto.Images)
                         {
                             var NewProductImages = new ProductImages()
                             {
@@ -152,6 +153,21 @@ namespace eCommerce.BackEndAPI.Repository.Services
                     var productDetailsDto = _mapper.Map<ProductDetailsDto>(product);
                     return productDetailsDto;
                 }
+            }
+            return null;
+        }
+
+        public async Task<ProductRatingsDto> WriteReviewAndRatingAsync(CreateProductRatingDto CreateProductRatingsDto)
+        {
+            var productRating = _mapper.Map<ProductRating>(CreateProductRatingsDto);
+            using (_db)
+            {
+                await _db.ProductRatings.AddAsync(productRating);
+                await _db.SaveChangesAsync();
+                var userProfile = await _db.UserProfile.FirstOrDefaultAsync(x => x.AccountId == CreateProductRatingsDto.AccountId);
+                var productRatingDto = _mapper.Map<ProductRatingsDto>(productRating);
+                productRatingDto.UserName = userProfile.FullName;
+                return productRatingDto;
             }
             return null;
         }

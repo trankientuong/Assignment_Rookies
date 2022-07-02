@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using eCommerce.BackEndAPI.Models.DTOs.AuthService;
 using eCommerce.BackEndAPI.Models.DTOs.CategoryService;
 using eCommerce.BackEndAPI.Models.DTOs.ProductService;
 using eCommerce.BackEndAPI.Models.Entities;
@@ -21,6 +22,11 @@ namespace eCommerce.BackEndAPI
                 .ReverseMap();
             CreateMap<ProductImages, ProductImagesDto>()
                 .ReverseMap();
+            CreateMap<CreateProductRatingDto, ProductRating>();
+            CreateMap<ProductRating, ProductRatingsDto>()
+                .ReverseMap();
+
+
 
             CreateMap<Category, CategoriesDto>()
                 .ReverseMap();
@@ -28,6 +34,14 @@ namespace eCommerce.BackEndAPI
             CreateMap<CategoryDetailsDto, Category>()
                 .ReverseMap();
             CreateMap<CategoryUpdateDto, Category>();
+
+
+            CreateMap<UpdateProfileDto, UserProfile>()
+                .ForMember(dest => dest.Avatar,act => act.Ignore());
+            CreateMap<UserProfile, UserDetailsDto>()
+                .ReverseMap();
+
+
         }
     }
 }

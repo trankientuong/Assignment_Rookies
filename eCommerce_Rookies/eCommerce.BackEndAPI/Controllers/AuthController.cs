@@ -11,11 +11,14 @@ using System.Security.Cryptography;
 using CryptographyHelper.HashAlgorithms;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using eCommerce.BackEndAPI.Repository.IServices;
+using Microsoft.AspNetCore.Authorization;
 
 namespace eCommerce.BackEndAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class AuthController : ControllerBase
     {
         private readonly eCommerceDbContext _db;
@@ -24,13 +27,19 @@ namespace eCommerce.BackEndAPI.Controllers
         private static readonly object _lock = new object();
         private static readonly Dictionary<string, RefreshToken> _refreshTokens = new Dictionary<string, RefreshToken>();
         private readonly IConfiguration _configuration;
+        private readonly IAuthService _authService;
 
-        public AuthController(eCommerceDbContext db, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration)
+        public AuthController(eCommerceDbContext db,
+                              UserManager<IdentityUser> userManager,
+                              RoleManager<IdentityRole> roleManager,
+                              IConfiguration configuration,
+                              IAuthService authService)
         {
             _db = db;
             _userManager = userManager;
             _roleManager = roleManager;
             _configuration = configuration;
+            _authService = authService;
         }
 
         [HttpGet]
@@ -166,6 +175,7 @@ namespace eCommerce.BackEndAPI.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpPost("Register")]
         public async Task<IActionResult> Register([FromBody] UserRegisterDto user)
         {
@@ -195,6 +205,15 @@ namespace eCommerce.BackEndAPI.Controllers
                         new Claim(ClaimTypes.Email,user.Email),
                         new Claim(ClaimTypes.Role,"User"),
                     });
+
+                    var userProfile = new UserProfile()
+                    {
+                        AccountId = NewUser.Id,
+                        FullName = user.FullName
+                    };
+                    await _db.UserProfile.AddAsync(userProfile);
+                    await _db.SaveChangesAsync();
+
                     var token = await CreateToken(NewUser);
                     var refreshTokenPart1 = GenerateRefreshToken();
                     var refreshTokenPart2 = GenerateRefreshToken();
@@ -221,7 +240,8 @@ namespace eCommerce.BackEndAPI.Controllers
             return BadRequest();
         }
 
-        
+
+        [AllowAnonymous]
         [HttpPost("Login")]
         public async Task<IActionResult> Login([FromBody] UserLoginDto user)
         {
@@ -236,7 +256,7 @@ namespace eCommerce.BackEndAPI.Controllers
                 }
 
                 var result = await _userManager.CheckPasswordAsync(existingUser, user.Password);
-                if(result == false)
+                if (result == false)
                 {
                     return BadRequest("Invalid Login Request");
                 }
@@ -262,6 +282,28 @@ namespace eCommerce.BackEndAPI.Controllers
                     Expiration = token.ValidTo
                 });
             }
+            return BadRequest(ModelState);
+        }
+
+        [HttpPost("[action]")]
+        public async Task<IActionResult> UpdateProfile([FromForm] UpdateProfileDto updateProfile)
+        {
+            var updatedProfile = await _authService.UpdateUserProfileAsync(updateProfile);
+            if (updatedProfile == null) return Unauthorized();
+            return Ok(updatedProfile);
+        }
+
+        [HttpPost("[action]")]
+        public async Task<IActionResult> ChangePasswordAsync(ChangePasswordDto changePassword)
+        {
+            var user = await _userManager.FindByIdAsync(changePassword.UserId);
+            if (user == null) return Unauthorized();
+            var checkPass = await _userManager.CheckPasswordAsync(user, changePassword.CurrentPassword);
+            var validPass = await _userManager.CheckPasswordAsync(user, changePassword.NewPassword);
+            if (!checkPass) return NoContent();
+            if (!validPass) return NotFound();
+            var result = await _userManager.ChangePasswordAsync(user, changePassword.CurrentPassword, changePassword.NewPassword);
+            if (result.Succeeded) return Ok(result);
             return BadRequest();
         }
 
