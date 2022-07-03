@@ -45,7 +45,7 @@ namespace eCommerce.BackEndAPI.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("CartDetails", (string)null);
+                    b.ToTable("CartDetails");
                 });
 
             modelBuilder.Entity("eCommerce.BackEndAPI.Models.Entities.CartHeader", b =>
@@ -62,7 +62,7 @@ namespace eCommerce.BackEndAPI.Migrations
 
                     b.HasKey("CartHeaderId");
 
-                    b.ToTable("CartHeaders", (string)null);
+                    b.ToTable("CartHeaders");
                 });
 
             modelBuilder.Entity("eCommerce.BackEndAPI.Models.Entities.Category", b =>
@@ -83,7 +83,7 @@ namespace eCommerce.BackEndAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("eCommerce.BackEndAPI.Models.Entities.Product", b =>
@@ -119,7 +119,7 @@ namespace eCommerce.BackEndAPI.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("eCommerce.BackEndAPI.Models.Entities.ProductImages", b =>
@@ -141,7 +141,7 @@ namespace eCommerce.BackEndAPI.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductImages", (string)null);
+                    b.ToTable("ProductImages");
                 });
 
             modelBuilder.Entity("eCommerce.BackEndAPI.Models.Entities.ProductRating", b =>
@@ -185,7 +185,7 @@ namespace eCommerce.BackEndAPI.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductRatings", (string)null);
+                    b.ToTable("ProductRatings");
                 });
 
             modelBuilder.Entity("eCommerce.BackEndAPI.Models.Entities.UserProfile", b =>
@@ -201,15 +201,12 @@ namespace eCommerce.BackEndAPI.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Avatar")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DateOfBirth")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FullName")
@@ -220,14 +217,13 @@ namespace eCommerce.BackEndAPI.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("PhoneNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AccountId");
 
-                    b.ToTable("UserProfile", (string)null);
+                    b.ToTable("UserProfile");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -478,7 +474,7 @@ namespace eCommerce.BackEndAPI.Migrations
                         .IsRequired();
 
                     b.HasOne("eCommerce.BackEndAPI.Models.Entities.Product", "Product")
-                        .WithMany()
+                        .WithMany("ProductRatings")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -553,6 +549,8 @@ namespace eCommerce.BackEndAPI.Migrations
             modelBuilder.Entity("eCommerce.BackEndAPI.Models.Entities.Product", b =>
                 {
                     b.Navigation("Images");
+
+                    b.Navigation("ProductRatings");
                 });
 #pragma warning restore 612, 618
         }

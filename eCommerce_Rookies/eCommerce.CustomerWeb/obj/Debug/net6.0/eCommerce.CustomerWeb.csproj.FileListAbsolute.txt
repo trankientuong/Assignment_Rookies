@@ -24,3 +24,12 @@ C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.Custome
 C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.CustomerWeb\obj\Debug\net6.0\eCommerce.CustomerWeb.pdb
 C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.CustomerWeb\obj\Debug\net6.0\eCommerce.CustomerWeb.genruntimeconfig.cache
 C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.CustomerWeb\obj\Debug\net6.0\ref\eCommerce.CustomerWeb.dll
+C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.CustomerWeb\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.CustomerWeb\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.CustomerWeb\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.CustomerWeb\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.CustomerWeb\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.CustomerWeb\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.CustomerWeb\bin\Debug\net6.0\eCommerce.SharedLibrary.dll
+C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.CustomerWeb\bin\Debug\net6.0\eCommerce.SharedLibrary.pdb
+C:\Users\MSl\source\repos\Assignment_Rookies\eCommerce_Rookies\eCommerce.CustomerWeb\obj\Debug\net6.0\eCommerce.CustomerWeb.csproj.CopyComplete

@@ -1,5 +1,6 @@
 ﻿using eCommerce.CustomerWeb.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Diagnostics;
 
 namespace eCommerce.CustomerWeb.Controllers
@@ -14,7 +15,7 @@ namespace eCommerce.CustomerWeb.Controllers
         }
 
         public IActionResult Index()
-        {
+        {           
             return View();
         }
 

@@ -13,6 +13,7 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using eCommerce.BackEndAPI.Repository.IServices;
 using Microsoft.AspNetCore.Authorization;
+using eCommerce.BackEndAPI.Models.DTOs;
 
 namespace eCommerce.BackEndAPI.Controllers
 {
@@ -192,6 +193,7 @@ namespace eCommerce.BackEndAPI.Controllers
                 if (usernameExist != null) // Ktra username
                 {
                     ModelState.AddModelError("UserName", "UserName already in use!");
+                    return BadRequest(ModelState);
                 }
 
                 var NewUser = new IdentityUser { Email = user.Email, UserName = user.UserName };
@@ -236,8 +238,17 @@ namespace eCommerce.BackEndAPI.Controllers
                         Expiration = token.ValidTo
                     });
                 }
+                else
+                {
+                    foreach(var err in result.Errors)
+                    {
+                        ModelState.AddModelError($"Password", $"{err.Description}");
+                    }
+                    return BadRequest(ModelState);
+                }
             }
-            return BadRequest();
+
+            return BadRequest(ModelState);
         }
 
 
@@ -258,7 +269,8 @@ namespace eCommerce.BackEndAPI.Controllers
                 var result = await _userManager.CheckPasswordAsync(existingUser, user.Password);
                 if (result == false)
                 {
-                    return BadRequest("Invalid Login Request");
+                    ModelState.AddModelError("Password", "Password not correct!");
+                    return BadRequest(ModelState);
                 }
                 var token = await CreateToken(existingUser);
                 var refreshTokenPart1 = GenerateRefreshToken();

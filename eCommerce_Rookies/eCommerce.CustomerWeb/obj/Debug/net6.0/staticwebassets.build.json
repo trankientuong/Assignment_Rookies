@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Pq1nWoxY2Htj7T99gm7na8ZbROP+NCGP3YxnktU5MXw=",
+  "Hash": "MqtWEKErGXaRus9bpnt3XQcvNRr9NkR3AYwG4rikZ64=",
   "Source": "eCommerce.CustomerWeb",
   "BasePath": "_content/eCommerce.CustomerWeb",
   "Mode": "Default",
@@ -66,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\css\\bootstrap.min.css"
+    },
+    {
+      "Identity": "C:\\Users\\MSl\\source\\repos\\Assignment_Rookies\\eCommerce_Rookies\\eCommerce.CustomerWeb\\wwwroot\\assets\\css\\Custom.css",
+      "SourceId": "eCommerce.CustomerWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MSl\\source\\repos\\Assignment_Rookies\\eCommerce_Rookies\\eCommerce.CustomerWeb\\wwwroot\\",
+      "BasePath": "_content/eCommerce.CustomerWeb",
+      "RelativePath": "assets/css/Custom.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\css\\Custom.css"
     },
     {
       "Identity": "C:\\Users\\MSl\\source\\repos\\Assignment_Rookies\\eCommerce_Rookies\\eCommerce.CustomerWeb\\wwwroot\\assets\\css\\demos\\demo-10.css",
@@ -20026,6 +20043,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\icons\\site.html"
     },
     {
+      "Identity": "C:\\Users\\MSl\\source\\repos\\Assignment_Rookies\\eCommerce_Rookies\\eCommerce.CustomerWeb\\wwwroot\\assets\\images\\img_avatar.png",
+      "SourceId": "eCommerce.CustomerWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MSl\\source\\repos\\Assignment_Rookies\\eCommerce_Rookies\\eCommerce.CustomerWeb\\wwwroot\\",
+      "BasePath": "_content/eCommerce.CustomerWeb",
+      "RelativePath": "assets/images/img_avatar.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\img_avatar.png"
+    },
+    {
       "Identity": "C:\\Users\\MSl\\source\\repos\\Assignment_Rookies\\eCommerce_Rookies\\eCommerce.CustomerWeb\\wwwroot\\assets\\images\\logo.png",
       "SourceId": "eCommerce.CustomerWeb",
       "SourceType": "Discovered",
@@ -25906,6 +25940,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\MSl\\source\\repos\\Assignment_Rookies\\eCommerce_Rookies\\eCommerce.CustomerWeb\\wwwroot\\popup\\quickView.html",
+      "SourceId": "eCommerce.CustomerWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MSl\\source\\repos\\Assignment_Rookies\\eCommerce_Rookies\\eCommerce.CustomerWeb\\wwwroot\\",
+      "BasePath": "_content/eCommerce.CustomerWeb",
+      "RelativePath": "popup/quickView.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\popup\\quickView.html"
     }
   ]
 }
