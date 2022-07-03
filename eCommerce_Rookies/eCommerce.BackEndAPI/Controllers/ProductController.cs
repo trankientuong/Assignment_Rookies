@@ -8,7 +8,7 @@ namespace eCommerce.BackEndAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
@@ -20,7 +20,7 @@ namespace eCommerce.BackEndAPI.Controllers
 
         [AllowAnonymous]
         [HttpGet("[action]")]
-        public async Task<IActionResult> GetProducts(int? page,int? pageSize)
+        public async Task<IActionResult> GetProducts(int? page, int? pageSize)
         {
             var products = await _productService.ListProductsAsync(page, pageSize);
             if (products == null) return BadRequest();
@@ -32,10 +32,11 @@ namespace eCommerce.BackEndAPI.Controllers
         public async Task<IActionResult> GetProductDetails(int productId)
         {
             var product = await _productService.GetDetailsProductAsync(productId);
-            if(product == null) return NotFound();
+            if (product == null) return NotFound();
             return Ok(product);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("[action]")]
         public async Task<IActionResult> CreateProduct([FromForm] CreateProductDto createProduct)
         {
@@ -44,14 +45,24 @@ namespace eCommerce.BackEndAPI.Controllers
             return Ok(product);
         }
 
-        [HttpPut("[action]/{productId}")]
-        public async Task<IActionResult> UpdateProduct(int productId,[FromForm] UpdateProductDto updateProduct)
+        [HttpPost("[action]")]
+        public async Task<IActionResult> ReviewAndRatingProduct([FromBody] CreateProductRatingDto createProductRatingDto)
         {
-            var product = await _productService.UpdateProductAsync(productId,updateProduct);
+            if (createProductRatingDto == null) return BadRequest();
+            var productRatingDto = await _productService.WriteReviewAndRatingAsync(createProductRatingDto);
+            return Ok(productRatingDto);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPut("[action]/{productId}")]
+        public async Task<IActionResult> UpdateProduct(int productId, [FromForm] UpdateProductDto updateProduct)
+        {
+            var product = await _productService.UpdateProductAsync(productId, updateProduct);
             if (product == null) return BadRequest();
             return Ok(product);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("[action]/{productId}")]
         public async Task<IActionResult> DeleteProduct(int productId)
         {

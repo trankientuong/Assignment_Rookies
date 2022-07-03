@@ -9,5 +9,6 @@ namespace eCommerce.BackEndAPI.Repository.IServices
         Task<ProductDetailsDto> CreateProductAsync(CreateProductDto productDto);
         Task<ProductDetailsDto> UpdateProductAsync(int productId,UpdateProductDto productDto);
         Task<ProductDetailsDto> DeleteProductAsync(int productId);
+        Task<ProductRatingsDto> WriteReviewAndRatingAsync(CreateProductRatingDto productRatingsDto);        
     }
 }

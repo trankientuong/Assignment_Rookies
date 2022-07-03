@@ -12,6 +12,9 @@ namespace eCommerce.SharedLibrary
         public static string PRODUCTS_PATH = "Images/Products";
 
         public static string CATEGORIES = "http://localhost:44337/Images/Categories/";
-        public static string CATEGORIES_PATH = "Image/Categories";
+        public static string CATEGORIES_PATH = "Images/Categories";
+
+        public static string AVATARS = "http://localhost:44337/Images/Avatars/";
+        public static string AVATARS_PATH = "Images/Avatars";
     }
 }
