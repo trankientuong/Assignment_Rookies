@@ -6,6 +6,7 @@ namespace eCommerce.BackEndAPI.Repository.IServices
     {
         Task<ProductsDto> ListProductsAsync(int? page, int? pageSize);
         Task<ProductDetailsDto> GetDetailsProductAsync(int productId);
+        Task<List<ProductDetailsDto>> GetProductsByCategory(int categoryId);
         Task<ProductDetailsDto> CreateProductAsync(CreateProductDto productDto);
         Task<ProductDetailsDto> UpdateProductAsync(int productId,UpdateProductDto productDto);
         Task<ProductDetailsDto> DeleteProductAsync(int productId);

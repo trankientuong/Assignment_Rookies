@@ -36,6 +36,15 @@ namespace eCommerce.BackEndAPI.Controllers
             return Ok(product);
         }
 
+        [AllowAnonymous]
+        [HttpGet("[action]/{categoryId}")]
+        public async Task<IActionResult> GetProductsByCategory(int categoryId)
+        {
+            var products = await _productService.GetProductsByCategory(categoryId);
+            if (products == null) return NotFound();
+            return Ok(products);
+        }
+
         [Authorize(Roles = "Admin")]
         [HttpPost("[action]")]
         public async Task<IActionResult> CreateProduct([FromForm] CreateProductDto createProduct)

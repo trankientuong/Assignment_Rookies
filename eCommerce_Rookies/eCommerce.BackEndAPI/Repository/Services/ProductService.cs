@@ -48,6 +48,20 @@ namespace eCommerce.BackEndAPI.Repository.Services
             }
         }
 
+        public async Task<List<ProductDetailsDto>> GetProductsByCategory(int categoryId)
+        {
+            using (_db)
+            {
+                var product = await _db.Products.Where(x => x.CategoryId == categoryId)
+                                                .Include(x => x.Images)
+                                                .Include(x => x.Category)
+                                                .ToListAsync();
+                var productDetailsDto = _mapper.Map<List<ProductDetailsDto>>(product);
+                return productDetailsDto;
+            }
+            return null;
+        }
+
         public async Task<ProductDetailsDto> DeleteProductAsync(int productId)
         {
             using (_db)

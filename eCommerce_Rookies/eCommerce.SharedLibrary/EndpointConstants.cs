@@ -16,12 +16,13 @@ namespace eCommerce.SharedLibrary
 
         public static class CategoryService
         {
-
+            public static string CATEGORIES = "api/Category/GetCategories";
         }
 
         public static class ProductService
         {
-
+            public static string PRODUCTS = "api/Product/GetProducts";
+            public static string PRODUCTS_BY_CATEGORY = "api/Product/GetProductsByCategory";
         }
 
         public static class CartService
