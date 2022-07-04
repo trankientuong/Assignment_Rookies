@@ -64,7 +64,7 @@ namespace eCommerce.CustomerWeb.Controllers
                 ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
                 IsPersistent = false
             };
-            _httpContextAccessor.HttpContext.Session.SetString("Token", TokenResponse.AccessToken);
+            _httpContextAccessor.HttpContext.Session.SetString("access_token", TokenResponse.AccessToken);
             await HttpContext.SignInAsync(
                         CookieAuthenticationDefaults.AuthenticationScheme,
                         userPrincipal,
@@ -122,7 +122,7 @@ namespace eCommerce.CustomerWeb.Controllers
                 ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
                 IsPersistent = false
             };
-            _httpContextAccessor.HttpContext.Session.SetString("Token", TokenResponse.AccessToken);
+            _httpContextAccessor.HttpContext.Session.SetString("access_token", TokenResponse.AccessToken);
             await HttpContext.SignInAsync(
                         CookieAuthenticationDefaults.AuthenticationScheme,
                         userPrincipal,

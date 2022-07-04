@@ -15,7 +15,7 @@ namespace eCommerce.CustomerWeb.Controllers
         }
 
         public IActionResult Index()
-        {           
+        {
             return View();
         }
 
