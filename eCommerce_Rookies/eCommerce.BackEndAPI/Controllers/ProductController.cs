@@ -19,7 +19,7 @@ namespace eCommerce.BackEndAPI.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("[action]")]
+        [HttpGet("[action]/{page}/{pageSize}")]
         public async Task<IActionResult> GetProducts(int? page, int? pageSize)
         {
             var products = await _productService.ListProductsAsync(page, pageSize);
@@ -37,10 +37,10 @@ namespace eCommerce.BackEndAPI.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("[action]/{categoryId}")]
-        public async Task<IActionResult> GetProductsByCategory(int categoryId)
+        [HttpGet("[action]/{categoryId}/{page}/{pageSize}")]
+        public async Task<IActionResult> GetProductsByCategory(int categoryId,int? page,int? pageSize)
         {
-            var products = await _productService.GetProductsByCategory(categoryId);
+            var products = await _productService.GetProductsByCategory(categoryId,page,pageSize);
             if (products == null) return NotFound();
             return Ok(products);
         }

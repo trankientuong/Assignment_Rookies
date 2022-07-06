@@ -48,18 +48,41 @@ namespace eCommerce.BackEndAPI.Repository.Services
             }
         }
 
-        public async Task<List<ProductDetailsDto>> GetProductsByCategory(int categoryId)
+        public async Task<ProductsDto> GetProductsByCategory(int categoryId, int? page, int? pageSize)
         {
             using (_db)
             {
-                var product = await _db.Products.Where(x => x.CategoryId == categoryId)
+                var products = await _db.Products.Where(x => x.CategoryId == categoryId)
                                                 .Include(x => x.Images)
                                                 .Include(x => x.Category)
+                                                .Include(r => r.ProductRatings)
                                                 .ToListAsync();
-                var productDetailsDto = _mapper.Map<List<ProductDetailsDto>>(product);
-                return productDetailsDto;
+                if (products != null)
+                {
+                    var _pageSize = pageSize ?? 8; // Số bản ghi trên trang
+                    var pageIndex = page ?? 1; // Số trang hiện tại nếu null thì bằng 1
+                    var totalPage = products.Count;
+                    var numberPage = Math.Ceiling((float)totalPage / _pageSize);
+                    var startPage = (pageIndex - 1) * _pageSize;
+                    products = products.Skip(startPage).Take(_pageSize).ToList();
+                    var ListProductsViewDto = _mapper.Map<List<ProductsViewDto>>(products);
+                    foreach (var product in ListProductsViewDto)
+                    {
+                        product.TotalRating = (product.TotalRating / product.TotalReview) * 2 * 10;
+                        if (double.IsNaN(product.TotalRating))
+                        {
+                            product.TotalRating = 0;
+                        }
+                    }
+                    var productsDto = _mapper.Map<ProductsDto>(ListProductsViewDto);
+                    productsDto.TotalItem = totalPage;
+                    productsDto.CurrentPage = pageIndex;
+                    productsDto.NumberPage = numberPage;
+                    productsDto.PageSize = _pageSize;
+                    return productsDto;
+                }
+                return null;
             }
-            return null;
         }
 
         public async Task<ProductDetailsDto> DeleteProductAsync(int productId)
@@ -91,10 +114,16 @@ namespace eCommerce.BackEndAPI.Repository.Services
             {
                 var product = await _db.Products.Include(p => p.Images)
                                                 .Include(p => p.Category)
-                                                .Include(p => p.ProductRatings)
+                                                .Include(p => p.ProductRatings)                                               
                                                 .FirstOrDefaultAsync(p => p.Id == productId);
                 if (product != null)
                 {
+                    foreach(var userRating in product.ProductRatings)
+                    {
+                        var user= await _db.Users.FirstOrDefaultAsync(x => x.Id == userRating.AccountId);
+                        userRating.User.UserName = user.UserName;
+                    }
+
                     var productDetailsDto = _mapper.Map<ProductDetailsDto>(product);
                     return productDetailsDto;
                 }
@@ -109,6 +138,7 @@ namespace eCommerce.BackEndAPI.Repository.Services
             {
                 var products = await _db.Products.Include(c => c.Category)
                                                  .Include(s => s.Images)
+                                                 .Include(r => r.ProductRatings)
                                                  .ToListAsync();
                 if (products != null)
                 {
@@ -118,8 +148,16 @@ namespace eCommerce.BackEndAPI.Repository.Services
                     var numberPage = Math.Ceiling((float)totalPage / _pageSize);
                     var startPage = (pageIndex - 1) * _pageSize;
                     products = products.Skip(startPage).Take(_pageSize).ToList();
-                    var ListProductDetailsDto = _mapper.Map<List<ProductDetailsDto>>(products);
-                    var productsDto = _mapper.Map<ProductsDto>(ListProductDetailsDto);
+                    var ListProductsViewDto = _mapper.Map<List<ProductsViewDto>>(products);
+                    foreach(var product in ListProductsViewDto)
+                    {
+                        product.TotalRating = (product.TotalRating / product.TotalReview) * 2 * 10;
+                        if (double.IsNaN(product.TotalRating))
+                        {
+                            product.TotalRating = 0;
+                        }
+                    }
+                    var productsDto = _mapper.Map<ProductsDto>(ListProductsViewDto);
                     productsDto.TotalItem = totalPage;
                     productsDto.CurrentPage = pageIndex;
                     productsDto.NumberPage = numberPage;
@@ -178,9 +216,9 @@ namespace eCommerce.BackEndAPI.Repository.Services
             {
                 await _db.ProductRatings.AddAsync(productRating);
                 await _db.SaveChangesAsync();
-                var userProfile = await _db.UserProfile.FirstOrDefaultAsync(x => x.AccountId == CreateProductRatingsDto.AccountId);
+                var userProfile = await _db.Users.FirstOrDefaultAsync(x => x.Id == CreateProductRatingsDto.AccountId);
                 var productRatingDto = _mapper.Map<ProductRatingsDto>(productRating);
-                productRatingDto.UserName = userProfile.FullName;
+                productRatingDto.UserName = userProfile.UserName;
                 return productRatingDto;
             }
             return null;
