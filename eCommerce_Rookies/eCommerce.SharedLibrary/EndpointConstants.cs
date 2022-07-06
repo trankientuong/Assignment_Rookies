@@ -24,6 +24,7 @@ namespace eCommerce.SharedLibrary
             public static string PRODUCTS = "api/Product/GetProducts";
             public static string PRODUCTS_BY_CATEGORY = "api/Product/GetProductsByCategory";
             public static string DETAILS = "api/Product/GetProductDetails";
+            public static string REVIEW_RATING = "api/Product/ReviewAndRatingProduct";
         }
 
         public static class CartService
