@@ -12,6 +12,8 @@ namespace eCommerce.SharedLibrary
         {
             public static string LOGIN = "api/Auth/Login";
             public static string REGISTER = "api/Auth/Register";
+            public static string PROFILE = "api/Auth/UpdateProfile";
+            public static string PASSWORD = "api/Auth/ChangePasswordAsync";
         }
 
         public static class CategoryService

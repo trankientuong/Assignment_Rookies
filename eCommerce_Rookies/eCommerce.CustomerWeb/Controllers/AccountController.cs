@@ -29,8 +29,16 @@ namespace eCommerce.CustomerWeb.Controllers
         }
 
         [HttpGet]
-        public IActionResult Login()
+        public IActionResult AccessDenied()
         {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Login(string returnURL = null)
+        {
+            returnURL ??= Url.Content("~/");
+            ViewData["returnUrl"] = returnURL;
             return View();
         }
 
@@ -45,15 +53,16 @@ namespace eCommerce.CustomerWeb.Controllers
             var json = JsonConvert.SerializeObject(request.LoginRequest);
             var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await client.PostAsync($"{_configuration["EndPoints:BackEnd"]}/{EndpointConstants.AccountService.LOGIN}", httpContent);
-            if(!response.IsSuccessStatusCode)
+            if (!response.IsSuccessStatusCode)
             {
                 var jsonString = await response.Content.ReadAsStringAsync();
                 var messages = JsonConvert.DeserializeObject<IDictionary<string, List<string>>>(jsonString);
-                foreach(var message in messages){
+                foreach (var message in messages)
+                {
                     message.Value.ForEach(x =>
                     {
                         ModelState.AddModelError($"LoginRequest.{message.Key}", $"{x}");
-                    });                    
+                    });
                 }
                 return View();
             }
@@ -61,7 +70,7 @@ namespace eCommerce.CustomerWeb.Controllers
             var userPrincipal = this.ValidateToken(TokenResponse.AccessToken);
             var authProperties = new AuthenticationProperties
             {
-                ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
+                ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(20),
                 IsPersistent = false
             };
             _httpContextAccessor.HttpContext.Session.SetString("access_token", TokenResponse.AccessToken);
@@ -70,7 +79,7 @@ namespace eCommerce.CustomerWeb.Controllers
                         userPrincipal,
                         authProperties);
 
-            return RedirectToAction("Index", "Home");
+            return LocalRedirect(request.LoginRequest.ReturnURL);
         }
 
         [HttpPost]
@@ -82,8 +91,10 @@ namespace eCommerce.CustomerWeb.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Register()
+        public async Task<IActionResult> Register(string returnURL = null)
         {
+            returnURL ??= Url.Content("~/");
+            ViewData["returnUrl"] = returnURL;
             return View();
         }
 
@@ -97,7 +108,7 @@ namespace eCommerce.CustomerWeb.Controllers
             {
                 return View("Login", request);
             }
-            
+
             var json = JsonConvert.SerializeObject(request.RegisterRequest);
             var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -119,7 +130,7 @@ namespace eCommerce.CustomerWeb.Controllers
             var userPrincipal = this.ValidateToken(TokenResponse.AccessToken);
             var authProperties = new AuthenticationProperties
             {
-                ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
+                ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(20),
                 IsPersistent = false
             };
             _httpContextAccessor.HttpContext.Session.SetString("access_token", TokenResponse.AccessToken);
@@ -127,7 +138,7 @@ namespace eCommerce.CustomerWeb.Controllers
                         CookieAuthenticationDefaults.AuthenticationScheme,
                         userPrincipal,
                         authProperties);
-            return RedirectToAction("Index","Home");
+            return LocalRedirect(request.LoginRequest.ReturnURL);
         }
 
         private ClaimsPrincipal ValidateToken(string token)

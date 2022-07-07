@@ -9,7 +9,11 @@ builder.Services.AddHttpClient();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
-        options.AccessDeniedPath = "/User/Forbidden";
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+        options.SlidingExpiration = true;
+        options.LoginPath = "/Account/Login";
+        options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter; 
+        options.AccessDeniedPath = "/Account/Forbidden";
     });
 builder.Services.AddSession();
 

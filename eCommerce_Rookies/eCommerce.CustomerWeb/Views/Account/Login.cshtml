@@ -3,7 +3,6 @@
     ViewData["Title"] = "Login";
     var TabSelected = ViewBag.SelectedTab;
     var loginResult = ViewData["LoginResult"] as LoginRequest;
-
 }
 <main class="main">
     <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
@@ -41,6 +40,9 @@
                                     <input type="password" class="form-control" id="singin-password-2" asp-for="LoginRequest.Password" required>
                                     <span asp-validation-for="LoginRequest.Password" class="text-danger"></span>
                                 </div><!-- End .form-group -->
+                                <div class="form-group">
+                                    <input asp-for="LoginRequest.ReturnURL" class="form-control" type="hidden" value=@ViewData["returnUrl"] />
+                                </div>
                                 <div class="form-footer">
                                     <button type="submit" class="btn btn-outline-primary-2">
                                         <span>LOG IN</span>
@@ -98,6 +100,9 @@
                                     <input type="password" class="form-control" id="register-password" asp-for="RegisterRequest.Password" required>
                                     <span asp-validation-for="RegisterRequest.Password" class="text-danger"></span>
                                 </div><!-- End .form-group -->
+                                <div class="form-group">
+                                    <input asp-for="RegisterRequest.ReturnURL" class="form-control" type="hidden" value=@ViewData["returnUrl"] />
+                                </div>
                                 <div class="form-footer">
                                     <button type="submit" class="btn btn-outline-primary-2">
                                         <span>SIGN UP</span>

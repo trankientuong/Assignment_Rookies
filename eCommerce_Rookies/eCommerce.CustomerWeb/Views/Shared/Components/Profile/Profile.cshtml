@@ -1,0 +1,30 @@
+﻿@model UserDetailsVM
+@{
+}
+<li>
+    <div class="header-dropdown">
+        <a href="#">
+            <img class="rounded-circle" src="~/assets/images/img_avatar.png" width="31" alt="FullName">
+        </a>
+        <div class="header-menu">
+            <ul style="flex-direction:column;align-items:start;">
+                <li>
+                    <a>
+                        <img class="rounded-circle" src="~/assets/images/img_avatar.png" width="31" alt="FullName">
+                        <span style="margin-left:10px;">
+                            @User.Identity.Name
+                            <p>User</p>
+                        </span>
+                    </a>
+                </li>
+                <li><a asp-controller="Account" asp-action="Profile">Profile</a></li>
+                <li><a asp-controller="Account" asp-action="Password">Change Password</a></li>
+                <li>
+                    <form method="post" asp-controller="Account" asp-action="Logout">
+                        <button type="submit">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</li>

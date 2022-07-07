@@ -16,8 +16,4 @@
     <ProjectReference Include="..\eCommerce.SharedLibrary\eCommerce.SharedLibrary.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Shared\Components\Profile\" />
-  </ItemGroup>
-
 </Project>

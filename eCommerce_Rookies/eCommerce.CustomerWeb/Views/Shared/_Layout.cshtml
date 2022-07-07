@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor _httpContextAccessor
+@{
+    var path = _httpContextAccessor.HttpContext.Request.Path;
+    var queryString = _httpContextAccessor.HttpContext.Request.QueryString;
+    var ReturnURL = path + queryString;
+}
+<!DOCTYPE html>
 <html>
 
 <!-- molla/index-21.html  22 Nov 2019 10:01:31 GMT -->
@@ -80,7 +87,8 @@
                                     <li><a href="contact.html">Contact Us</a></li>
                                     @if (User.Identity.IsAuthenticated)
                                     {
-                                        <li>
+                                        @await Component.InvokeAsync("Profile")
+                                    @* <li>
                                             <div class="header-dropdown">
                                                 <a href="#">
                                                     <img class="rounded-circle" src="~/assets/images/img_avatar.png" width="31" alt="FullName">
@@ -106,7 +114,7 @@
                                                     </ul>
                                                 </div>
                                             </div>
-                                        </li>
+                                        </li>*@
                                     }
                                     else
                                     {
@@ -885,6 +893,9 @@
                                             <label for="singin-password">Password *</label>
                                             <input type="password" class="form-control" id="singin-password" name="LoginRequest.Password" required>
                                         </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="LoginRequest.ReturnURL" value="@ReturnURL" required>
+                                        </div>
 
                                         <!-- End .form-group -->
 
@@ -947,7 +958,9 @@
                                             <label for="register-password">Password *</label>
                                             <input type="password" class="form-control" id="register-password" name="RegisterRequest.Password" required>
                                         </div><!-- End .form-group -->
-
+                                        <div class="form-group">
+                                            <input type="hidden" class="form-control" name="RegisterRequest.ReturnURL" value="@ReturnURL">
+                                        </div>
                                         <div class="form-footer">
                                             <button type="submit" class="btn btn-outline-primary-2">
                                                 <span>SIGN UP</span>

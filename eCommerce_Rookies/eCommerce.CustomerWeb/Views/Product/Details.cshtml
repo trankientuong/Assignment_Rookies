@@ -132,7 +132,7 @@
                         <div class="reviews">
                             <h3>
                                 Reviews (@totalReview)
-                                <a style="float:right;" class="btn btn-primary" data-toggle="modal" data-target="#RatingModalCenter">Write your review</a>
+                                <a style="float:right;" class="btn btn-primary btnReview" data-toggle="modal" data-target="#RatingModalCenter">Write your review</a>
                             </h3>
                             @foreach (var review in Model.ProductRatings)
                             {
@@ -243,6 +243,23 @@
                 'selector': '#rating',
             });
 
+            $('body').on('click', '.btnReview', function(e) {
+                if (@User.Identity.IsAuthenticated.ToString().ToLower()) {
+                    $('#RatingModalCenter').modal('show');
+                } else {
+                    e.stopPropagation();
+                    $('#RatingModalCenter').modal('hide');
+                    swal({
+                        icon: "info",
+                        title: "You need to login to write your reviews and ratings."
+                    }).then((confirm) => {
+                        if (confirm) {
+                            $('#signin-modal').modal('show');
+                        }
+                    });
+                }
+            })
+
             $('#RatingModalCenter').on('click', '.btnSave', function() {
                 var productId = $('input[name=productId]').val();
                 var rating = $("input[name=rating]").val();
@@ -279,23 +296,30 @@
                             );
                             review.appendTo('.reviews');
                             swal({
-                            icon: "success",
-                            title: "Successfully."
-                        })
+                                icon: "success",
+                                title: "Successfully."
+                            })
                             $('#RatingModalCenter').modal('hide');
                         }
                     },
 
                     error: function(xhr, statusText, err) {
-                        //console.log(xhr.getResponseHeader('location'));
-                        swal({
-                            icon: "info",
-                            title: "You need to login to write your reviews and ratings."
-                        }).then((confirm) => {
-                            if (confirm) {
-                                window.location.href = xhr.getResponseHeader('location');
-                            }
-                        });
+                        console.log(xhr.statusCode());
+                        //if (xhr.status === 401) {
+                        //    var url = new RegExp("@Url.ActionContext.HttpContext.Request.Path@Url.ActionContext.HttpContext.Request.QueryString");
+                        //    var returnURL = xhr.getResponseHeader('location');
+                        //    //console.log(url);
+                        //    //console.log(returnURL);
+                        //    swal({
+                        //        icon: "info",
+                        //        title: "You need to login to write your reviews and ratings."
+                        //    }).then((confirm) => {
+                        //        if (confirm) {
+                        //            window.location.href = returnURL;
+                        //        }
+                        //    });
+                        //}
+
                     },
                     //statusCode: {
                     //    401: function() {
