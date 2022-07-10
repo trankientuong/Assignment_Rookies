@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "cmkKd1+1GwK3kZ2S/1Cn76ywv6yQaLICY2PKH2RR8fE=",
+  "Hash": "ZlQu5UREzxYpsFmNfWI9TmwXP3UzwlrZTPdLar/4OG8=",
   "Source": "eCommerce.CustomerWeb",
   "BasePath": "_content/eCommerce.CustomerWeb",
   "Mode": "Default",
@@ -24903,6 +24903,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\MSl\\source\\repos\\Assignment_Rookies\\eCommerce_Rookies\\eCommerce.CustomerWeb\\wwwroot\\js\\cart.js",
+      "SourceId": "eCommerce.CustomerWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MSl\\source\\repos\\Assignment_Rookies\\eCommerce_Rookies\\eCommerce.CustomerWeb\\wwwroot\\",
+      "BasePath": "_content/eCommerce.CustomerWeb",
+      "RelativePath": "js/cart.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\cart.js"
     },
     {
       "Identity": "C:\\Users\\MSl\\source\\repos\\Assignment_Rookies\\eCommerce_Rookies\\eCommerce.CustomerWeb\\wwwroot\\js\\rating.js",

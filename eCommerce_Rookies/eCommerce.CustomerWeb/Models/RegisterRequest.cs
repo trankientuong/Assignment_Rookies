@@ -14,5 +14,7 @@ namespace eCommerce.CustomerWeb.Models
 
         [Required]
         public string Password { get; set; }
+        public string ReturnURL { get; set; }
+
     }
 }

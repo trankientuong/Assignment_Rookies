@@ -26,7 +26,7 @@ namespace eCommerce.CustomerWeb.Controllers
 
         public IActionResult GetQuickViewViewComponent(int productId)
         {
-            return ViewComponent("QuickView", new { productId = productId });//it will call Follower.cs InvokeAsync, and pass id to it.
+            return ViewComponent("QuickView", new { productId = productId });//it will call QuickView.cs InvokeAsync, and pass id to it.
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
