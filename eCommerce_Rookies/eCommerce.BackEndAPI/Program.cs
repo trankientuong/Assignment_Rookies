@@ -15,6 +15,7 @@ var connectionString = builder.Configuration.GetConnectionString("RookiesConnect
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
+builder.Services.AddTransient<ICartService, CartService>();
 builder.Services.AddTransient<IFileService, FileService>();
 builder.Services.AddTransient<IAuthService, AuthService>();
 

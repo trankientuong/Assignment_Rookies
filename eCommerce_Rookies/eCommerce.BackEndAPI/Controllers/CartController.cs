@@ -16,7 +16,14 @@ namespace eCommerce.BackEndAPI.Controllers
             _cartService = cartService;
         }
 
-        [HttpGet("GetCart/{userId}")]
+        [HttpGet("[action]/{productId}")]
+        public async Task<IActionResult> GetProductToCart(int productId)
+        {
+            var product = await _cartService.GetProductToCart(productId);
+            return Ok(product);
+        }
+
+        [HttpGet("[action]/{userId}")]
         public async Task<IActionResult> GetCart(string userId)
         {
             try
@@ -29,21 +36,8 @@ namespace eCommerce.BackEndAPI.Controllers
             }
         }
 
-        [HttpPost("AddCart")]
+        [HttpPost("[action]")]
         public async Task<IActionResult> AddCart(CartDto cartDto)
-        {
-            try
-            {
-                CartDto cartDt = await _cartService.CreateUpdateCart(cartDto);
-                return Ok(cartDt);
-            }catch(Exception e)
-            {
-                return BadRequest(e.Message);
-            }
-        }
-
-        [HttpPost("UpdateCart")]
-        public async Task<IActionResult> UpdateCart(CartDto cartDto)
         {
             try
             {
@@ -56,7 +50,21 @@ namespace eCommerce.BackEndAPI.Controllers
             }
         }
 
-        [HttpPost("RemoveCart")]
+        [HttpPost("[action]")]
+        public async Task<IActionResult> UpdateCart(CartDto cartDto)
+        {
+            try
+            {
+                CartDto cartDt = await _cartService.UpdateQuantityCart(cartDto);
+                return Ok(cartDt);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpPost("[action]")]
         public async Task<IActionResult> RemoveCart([FromBody] int cartId)
         {
             try

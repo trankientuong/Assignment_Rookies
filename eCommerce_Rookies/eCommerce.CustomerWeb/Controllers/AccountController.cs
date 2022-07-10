@@ -138,7 +138,7 @@ namespace eCommerce.CustomerWeb.Controllers
                         CookieAuthenticationDefaults.AuthenticationScheme,
                         userPrincipal,
                         authProperties);
-            return LocalRedirect(request.LoginRequest.ReturnURL);
+            return LocalRedirect(request.RegisterRequest.ReturnURL);
         }
 
         private ClaimsPrincipal ValidateToken(string token)

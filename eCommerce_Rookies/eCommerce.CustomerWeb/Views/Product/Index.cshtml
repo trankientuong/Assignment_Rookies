@@ -26,7 +26,7 @@
     <div class="page-content">
         <div class="container">
             <div class="row">
-                <div class="col-lg-9">
+                <div class="col-lg-12">
                     <div class="toolbox">
                         <div class="toolbox-left">
                             <div class="toolbox-info">
@@ -65,7 +65,6 @@
                                                 <a href="@Url.Action("GetQuickViewViewComponent","Home",new{productId = @product.Id})" class="btn-product-icon btn-quickview btnQuickview" id="@product.Id" title="Quick view"><span>Quick view</span></a>
                                                 <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                                             </div><!-- End .product-action-vertical -->
-
                                             <div class="product-action">
                                                 <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
                                             </div><!-- End .product-action -->
@@ -116,16 +115,17 @@
                                         </a>
                                     </li>
                                 }
-                                @for(int i = 1; i<= Model.NumberPage; i++)
+                                @for (int i = 1; i <= Model.NumberPage; i++)
                                 {
-                                    if(Model.CurrentPage == i)
+                                    if (Model.CurrentPage == i)
                                     {
                                         <li class="page-item active" aria-current="page"><a class="page-link" href="@Url.Action("Index","Product",new{categoryId = categoryId,page = i,pageSize = pageSize})">@i</a></li>
-                                    }else
+                                    }
+                                    else
                                     {
                                         <li class="page-item"><a class="page-link" href="@Url.Action("Index","Product",new{categoryId = categoryId,page = i,pageSize = pageSize})">@i</a></li>
                                     }
-                                }                                                                
+                                }
                                 <li class="page-item-total">of @Model.NumberPage</li>
                                 @if (Model.CurrentPage != Model.NumberPage && Model.Products.Count > 0)
                                 {
@@ -139,7 +139,7 @@
                         }
                     </nav>
                 </div><!-- End .col-lg-9 -->
-                <aside class="col-lg-3 order-lg-first">
+                @*<aside class="col-lg-3 order-lg-first">
                     <div class="sidebar sidebar-shop">
                         <div class="widget widget-clean">
                             <label>Filters:</label>
@@ -230,28 +230,8 @@
                             </div><!-- End .collapse -->
                         </div><!-- End .widget -->
                     </div><!-- End .sidebar sidebar-shop -->
-                </aside><!-- End .col-lg-3 -->
+                </aside>*@<!-- End .col-lg-3 -->
             </div><!-- End .row -->
         </div><!-- End .container -->
     </div><!-- End .page-content -->
 </main><!-- End .main -->
-@section Scripts{
-    <script>
-        //$(document).ready(function() {
-        //    $('.btnQuickview').click(function() {
-        //        {
-        //            //$(".btnQuickview").empty();
-        //            var _url = '@Url.Action("GetQuickViewViewComponent", "Home")';
-        //            $.ajax({
-        //                type: "GET",
-        //                url: _url,
-        //                data: { productId: $(this).prop("id") },
-        //                success: function(result) {
-        //                    alert('OK');
-        //                },
-        //            });
-        //        }
-        //    });
-        //});
-    </script>
-}
